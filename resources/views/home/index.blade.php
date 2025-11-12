@@ -13,6 +13,9 @@
 <body class="screen">
    <div class="home-container"> 
      <div class="chats-container">
+        <div class="chat"> FILMES </div>
+        <div class="chat"> MÚSICA </div>
+        <div class="chat"> GASTRONOMIA </div>
     </div>
     <div class="messages-container">
        <div class="message-input-area">  <input class="input"  placeholder="Participe do chat!">
