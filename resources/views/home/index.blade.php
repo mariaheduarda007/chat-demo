@@ -2,27 +2,36 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="{{ asset('css/login.css') }}"> -->
-    @vite('resources/css/login.css')
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Document</title>
+   <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+
+
+  @vite(['resources/js/home.js', 'resources/css/app.css'])
+
+   <title>Document</title>
 </head>
 
 <body class="screen">
-   <div class="home-container"> 
-     <div class="chats-container">
-        <div class="chat"> FILMES </div>
-        <div class="chat"> MÚSICA </div>
-        <div class="chat"> GASTRONOMIA </div>
-    </div>
-    <div class="messages-container">
-       <div class="message-input-area">  <input class="input"  placeholder="Participe do chat!">
-       <div class="button-send"> Enviar </div> </div>
-       <div class="message"> OI </div>
-    </input>
-   </div>
+   <div class="home-container">
+      <div class="chats-container">
+         <div id="chat1" class="chat" data-room="filmes">FILMES</div>
+         <div class="chat" data-room="musica">MÚSICA</div>
+         <div class="chat" data-room="gastronomia">GASTRONOMIA</div>
+      </div>
+      <div class="messages-container">
+         <ul id="messages-list">
+          
+         </ul> 
+
+         <div class="message-input-area">
+            <input id="input-msg" class="input" placeholder="Participe do chat!">
+            <div id="send-msg" class="button-send">Enviar</div>
+         </div>
+      </div>
+
 </body>
 
 </html>
