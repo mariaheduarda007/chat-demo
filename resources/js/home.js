@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('input-msg');
   const sendBtn = document.getElementById('send-msg');
   const roomButtons = document.querySelectorAll('.chat'); 
-
   const USER = localStorage.getItem('userName');
 
   let currentRoom = null;
@@ -17,12 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   socket.on('chat_message', (payload) => {
-    if(payload.room === currentRoom)
     appendMessage(payload);
   });
 
 
-  function appendMessage({ user, text, room }) {
+  function appendMessage({ user, text}) {
     const li = document.createElement('li');
     li.className = 'message';
 
@@ -55,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
       user: USER,
       text,
       room: currentRoom,
-      time: new Date().toLocaleTimeString(),
     };
 
     socket.emit('chat_message', payload);
@@ -68,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
   roomButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
   const room = btn.dataset.room;
-  alert("entrou")
       
   if (currentRoom === room) return;
 
@@ -76,9 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
       socket.emit('leave_room', currentRoom);
       console.log(`Saiu da sala: ${currentRoom}`);
   }
-
-  roomButtons.forEach((b) => b.classList.remove('active')); 
-  btn.classList.add('active'); 
   currentRoom = room;
   socket.emit('join_room', room);
   messagesList.innerHTML = '';
