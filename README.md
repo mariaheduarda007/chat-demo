@@ -12,11 +12,14 @@ mantém o servidor websocket rodando
 
 ## laravel
 
-1 - php artisan serve 
-mantém o servidor do front rodando e reagindo às mudanças da tela
+1 - composer install 
 
 2 - npm run build
 construir as depêndencias do vite, carrega os arquivos JS/CSS rapidamente usando ES Modules nativos
+
+3 - php artisan serve 
+mantém o servidor do front rodando e reagindo às mudanças da tela
+
 
 
 

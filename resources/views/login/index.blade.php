@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{-- Passa a rota Laravel como variável JS --}}
    <script>
     window.rotaHome = "{{ route('home.index') }}";
     </script> 
 
-    {{-- Importa seu JS depois de definir a variável --}}
     @vite(['resources/js/login.js'])
     @vite('resources/css/app.css')
     <title>Login</title>

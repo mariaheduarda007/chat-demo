@@ -6,10 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('input-msg');
   const sendBtn = document.getElementById('send-msg');
   const roomButtons = document.querySelectorAll('.chat'); 
-  const chat = document.getElementById('chat1'); 
-  console.log(chat)
 
-  const USER = localStorage.getItem('userName') || 'Visitante';
+  const USER = localStorage.getItem('userName');
 
   let currentRoom = null;
 
@@ -67,25 +65,23 @@ document.addEventListener('DOMContentLoaded', () => {
   sendBtn.addEventListener('click', send);
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
 
-    roomButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const room = btn.dataset.room;
-      alert("entrou")
+  roomButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+  const room = btn.dataset.room;
+  alert("entrou")
       
-      if (currentRoom === room) return;
+  if (currentRoom === room) return;
 
-      if (currentRoom) {
-        socket.emit('leave_room', currentRoom);
-        console.log(`Saiu da sala: ${currentRoom}`);
-      }
+  if (currentRoom) {
+      socket.emit('leave_room', currentRoom);
+      console.log(`Saiu da sala: ${currentRoom}`);
+  }
 
-      roomButtons.forEach((b) => b.classList.remove('active')); // remove dos outros
-      btn.classList.add('active'); 
-      currentRoom = room;
-      socket.emit('join_room', room);
-      
-      
-      messagesList.innerHTML = '';
+  roomButtons.forEach((b) => b.classList.remove('active')); 
+  btn.classList.add('active'); 
+  currentRoom = room;
+  socket.emit('join_room', room);
+  messagesList.innerHTML = '';
     });
   });
 });
